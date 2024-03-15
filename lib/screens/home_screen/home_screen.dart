@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_provider_new/screens/api2_screen/api2_screen.dart';
 
 import '../api1_screen/api1_screen.dart';
 
@@ -24,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: phoneWidth - 100,
+              width: phoneWidth ,
               height: 60.h,
               child: TextButton(
                 style: TextButton.styleFrom(backgroundColor: Colors.white),
@@ -37,14 +38,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 child: Text(
-                  "Api 1",
+                  "Api Country",
                   style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,
                       fontSize: 30.sp),
                 ),
               ),
-            )
+            ),
+            SizedBox(height: 15.h,),
+            SizedBox(
+              width: phoneWidth,
+              height: 60.h,
+              child: TextButton(
+                style: TextButton.styleFrom(backgroundColor: Colors.white),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const APi2(),
+                    ),
+                  );
+                },
+                child: Text(
+                  "Api Users",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30.sp),
+                ),
+              ),
+            ),
+
           ],
         ),
       ),

@@ -1,28 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get_provider_new/data/models/country_model/country_model.dart';
+import 'package:get_provider_new/data/models/user_model/user_model.dart';
 import 'package:get_provider_new/data/repository/country_repository.dart';
 
-class CountryViewModel extends ChangeNotifier {
-  CountryViewModel({
-    required this.countryRepository,
+class UserViewModel extends ChangeNotifier {
+  UserViewModel({
+    required this.userRepo,
   });
 
-  final DataRepository countryRepository;
+  final DataRepository userRepo;
 
   bool isLoading = false;
-  List<CountryModel> countries = [];
+  List<UserModel> users = [];
 
   fetchCurrencies() async {
     isLoading = true;
     notifyListeners();
-    var county = await countryRepository.getCountries();
+    var user = await userRepo.getUser();
     isLoading = false;
     notifyListeners();
-    if (county.isEmpty) {
+    if (user.isEmpty) {
       debugPrint("Bosh ekan hafa bomisan");
     } else {
       debugPrint("Hammasi yaxshi");
-      countries = county;
+      users = user;
       notifyListeners();
     }
   }

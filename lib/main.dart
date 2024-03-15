@@ -4,6 +4,7 @@ import 'package:get_provider_new/data/network/api_provider.dart';
 import 'package:get_provider_new/data/repository/country_repository.dart';
 import 'package:get_provider_new/screens/home_screen/home_screen.dart';
 import 'package:get_provider_new/view_model/country_view_model.dart';
+import 'package:get_provider_new/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -13,7 +14,12 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => CountryViewModel(
-            countryRepository: CountryRepository(apiProvider: apiProvider),
+            countryRepository: DataRepository(apiProvider: apiProvider),
+          ),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserViewModel(
+            userRepo: DataRepository(apiProvider: apiProvider),
           ),
         ),
       ],

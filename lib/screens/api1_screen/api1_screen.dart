@@ -14,6 +14,15 @@ class Api1 extends StatefulWidget {
 }
 
 class _Api1State extends State<Api1> {
+
+  @override
+  void initState() {
+    context.read<CountryViewModel>().fetchCurrencies();
+    setState(() {
+
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,33 +46,36 @@ class _Api1State extends State<Api1> {
                     CountryModel country =
                         context.watch<CountryViewModel>().countries[index];
                     print(context.watch<CountryViewModel>().countries.length);
-                    return ListTile(
-                      leading: Image.network(country.flagModel.png),
-                      title: Text(
-                        country.name.common,
-                        style: TextStyle(
-                            color: Colors.white,
+                    return Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.h),
+                      child: ListTile(
+                        leading: Image.network(country.flagModel.png , width: 70.w, fit : BoxFit.cover),
+                        title: Text(
+                          country.name.common,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        subtitle: Text(
+                          country.region,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        trailing: Text(country.flag ,style: TextStyle(
+                            color : Colors.white,
                             fontSize: 20.sp,
-                            fontWeight: FontWeight.w500),
+                            fontWeight:FontWeight.w500
+                        ),),
                       ),
-                      subtitle: Text(
-                        country.capital[0],
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      trailing: Text(country.flag ,style: TextStyle(
-                          color : Colors.white,
-                          fontSize: 20.sp,
-                          fontWeight:FontWeight.w500
-                      ),),
                     );
                   })
                 ],
               ),
             ),
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.black,
     );
   }
 }

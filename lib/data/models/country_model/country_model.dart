@@ -3,16 +3,16 @@ import 'name_model.dart';
 
 class CountryModel{
   final NameModel name;
-  final List<dynamic> capital;
+  final String region;
   final String flag;
   final FlagModel flagModel;
 
-  CountryModel({required this.name , required this.capital , required this.flag , required this.flagModel});
+  CountryModel({required this.name , required this.region , required this.flag , required this.flagModel});
 
   factory CountryModel.fromJson(Map<String ,dynamic> json){
     return CountryModel(
         name : NameModel.fromJson(json["name"]),
-        capital: json["capital"] as List<dynamic>? ?? [],
+        region: json["region"] as String ?? "",
         flag: json["flag"] as String? ?? "",
         flagModel: FlagModel.fromJson(json["flags"])
     );

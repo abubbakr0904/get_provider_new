@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:get_provider_new/data/models/country_model/country_model.dart';
+import 'package:get_provider_new/data/models/user_model/user_model.dart';
 import 'package:get_provider_new/utils/api/api.dart';
 import 'package:http/http.dart' as http;
 class ApiProvider{
@@ -9,6 +10,19 @@ class ApiProvider{
       http.Response response = await http.get(Uri.parse(AppApi.countriesApi));
       if(response.statusCode == 200){
         return (jsonDecode(response.body) as List?)?.map((e) => CountryModel.fromJson(e)).toList() ?? [];
+      }
+      return [];
+    }
+    catch(error){
+      rethrow;
+    }
+  }
+
+  Future<List<UserModel>> getUser()async{
+    try {
+      http.Response response = await http.get(Uri.parse(AppApi.userApi));
+      if(response.statusCode == 200){
+        return (jsonDecode(response.body) as List?)?.map((e) => UserModel.fromJson(e)).toList() ?? [];
       }
       return [];
     }
